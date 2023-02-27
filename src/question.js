@@ -24,7 +24,10 @@ export class Question {
 
         const html = questions.length
             ? questions.map(toCard).join('')
-            : '<div class="mui--text-headline">Вы пока ничего не спрашивали </div>'
+            : `<div class="mui--text-headline">Вы пока ничего не спрашивали </div>`
+
+        const list = document.getElementById('list')
+        list.innerHTML = html
     }
 }
 
@@ -44,5 +47,12 @@ export class Question {
 
 
 function toCard(question){
-    
+    return  ` 
+    <div class="mui--text-black-54">
+        ${new Date(question.date).toLocaleDateString()}
+        ${new Date(question.date).toLocaleTimeString()}
+    </div>
+    <div>${question.text}</div> 
+    <br>
+    `
 }
